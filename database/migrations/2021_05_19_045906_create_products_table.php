@@ -15,15 +15,19 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('category')->nullable();
-            $table->string('name')->nullable();
-            $table->string('description')->nullable();
-            $table->decimal('price', 22)->nullable();
+            $table->unsignedBigInteger('category_id');
+            $table->string('product_name')->nullable();
+            $table->integer('quantity_available')->nullable();
+            $table->timestamp('product_entrance_date')->nullable();
+            $table->timestamp('product_finishup_date')->nullable();
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->softDeletes();
-
             $table->timestamps();
-        });
-    }
+          });
+
+
+
+  }
 
     /**
      * Reverse the migrations.
@@ -34,4 +38,5 @@ class CreateProductsTable extends Migration
     {
         Schema::dropIfExists('products');
     }
+
 }

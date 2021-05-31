@@ -37,6 +37,12 @@ Route::get('/user_profile', [App\Http\Controllers\HomeController::class, 'userPr
 
 Route::resource('categories', CategoryController::class);
 
-Route::get('users/deletedcategories',[CategoryController::class,'getDeletecategories'])->name('getDeletecategories');
-Route::get('users/deletedcategories/{id}',[CategoryController::class,'restoreDeletecategories'])->name('restoreDeletecategories');
-Route::get('users/restorecategories/{id}',[CategoryController::class,'deletePermanently'])->name('deletePermanently');
+Route::get('categories/deletedcategories',[CategoryController::class,'getDeletecategories'])->name('getDeletecategories');
+Route::get('categories/deletedcategories/{id}',[CategoryController::class,'restoreDeletecategories'])->name('restoreDeletecategories');
+Route::get('categories/restorecategories/{id}',[CategoryController::class,'deletePermanently'])->name('deletePermanently');
+
+Route::resource('products', ProductController::class);
+
+Route::get('products/deletedproducts',[ProductController::class,'getDeleteproducts'])->name('getDeleteproducts');
+Route::get('products/deletedproducts/{id}',[ProductController::class,'restoreDeleteproducts'])->name('restoreDeleteproducts');
+Route::get('products/restoreproducts/{id}',[ProductController::class,'deletePermanently'])->name('deletePermanently');
